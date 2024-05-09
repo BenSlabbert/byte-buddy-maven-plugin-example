@@ -4,6 +4,7 @@ package com.example.bytebuddy.client;
 import com.example.bytebuddy.annotation.ApplyTransformation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.slf4j.MDC;
 
 @ApplyTransformation
 public class Main {
@@ -18,9 +19,16 @@ public class Main {
   }
 
   public static void main(String[] args) {
+    MDC.put("traceId", "trace-123");
+    log.debug("debug");
+    log.atDebug()
+        .addKeyValue("key1", "someValue1")
+        .addKeyValue("keyA", "someValueA")
+        .log("Message");
     log.info("Hello World");
     new Main().existingMethod("arg", 1);
     new Main().test();
+    MDC.remove("traceId");
   }
 
   public void existingMethod(String arg, int i) {
