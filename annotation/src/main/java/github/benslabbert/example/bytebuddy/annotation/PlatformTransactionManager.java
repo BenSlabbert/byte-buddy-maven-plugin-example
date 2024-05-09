@@ -1,5 +1,5 @@
 /* Licensed under Apache-2.0 2024. */
-package com.example.bytebuddy.annotation;
+package github.benslabbert.example.bytebuddy.annotation;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

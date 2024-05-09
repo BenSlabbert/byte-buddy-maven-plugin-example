@@ -1,7 +1,7 @@
 /* Licensed under Apache-2.0 2024. */
-package com.example.bytebuddy.client;
+package github.benslabbert.example.bytebuddy.client;
 
-import com.example.bytebuddy.annotation.ApplyTransformation;
+import github.benslabbert.example.bytebuddy.annotation.ApplyTransformation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.slf4j.MDC;

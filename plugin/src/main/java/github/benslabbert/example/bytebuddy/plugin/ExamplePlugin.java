@@ -1,5 +1,5 @@
 /* Licensed under Apache-2.0 2024. */
-package com.example.bytebuddy.plugin;
+package github.benslabbert.example.bytebuddy.plugin;
 
 import static net.bytebuddy.matcher.ElementMatchers.isAnnotatedWith;
 import static net.bytebuddy.matcher.ElementMatchers.isToString;
@@ -7,8 +7,8 @@ import static net.bytebuddy.matcher.ElementMatchers.named;
 import static net.bytebuddy.matcher.ElementMatchers.returns;
 import static net.bytebuddy.matcher.ElementMatchers.takesNoArguments;
 
-import com.example.bytebuddy.annotation.ApplyTransformation;
-import com.example.bytebuddy.annotation.PlatformTransactionManager;
+import github.benslabbert.example.bytebuddy.annotation.ApplyTransformation;
+import github.benslabbert.example.bytebuddy.annotation.PlatformTransactionManager;
 import java.lang.reflect.Modifier;
 import java.util.Arrays;
 import net.bytebuddy.asm.Advice;

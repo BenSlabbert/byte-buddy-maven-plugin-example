@@ -2,17 +2,17 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <parent>
-    <groupId>com.example.byte-buddy.parent</groupId>
+    <groupId>github.benslabbert.example.bytebuddy.parent</groupId>
     <artifactId>byte-buddy-maven-plugin-example</artifactId>
     <version>${revision}</version>
   </parent>
 
-  <groupId>com.example.byte-buddy.client</groupId>
+  <groupId>github.benslabbert.example.bytebuddy.client</groupId>
   <artifactId>client</artifactId>
 
   <dependencies>
     <dependency>
-      <groupId>com.example.byte-buddy.annotation</groupId>
+      <groupId>github.benslabbert.example.bytebuddy.annotation</groupId>
       <artifactId>annotation</artifactId>
       <version>${revision}</version>
     </dependency>
@@ -39,10 +39,10 @@
         <configuration>
           <transformations>
             <transformation>
-              <groupId>com.example.byte-buddy.plugin</groupId>
+              <groupId>github.benslabbert.example.bytebuddy.plugin</groupId>
               <artifactId>plugin</artifactId>
               <version>${revision}</version>
-              <plugin>com.example.bytebuddy.plugin.ExamplePlugin</plugin>
+              <plugin>github.benslabbert.example.bytebuddy.plugin.ExamplePlugin</plugin>
             </transformation>
           </transformations>
         </configuration>
@@ -70,7 +70,7 @@
               <transformers>
                 <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
                   <manifestEntries>
-                    <Main-Class>com.example.bytebuddy.client.Main</Main-Class>
+                    <Main-Class>github.benslabbert.example.bytebuddy.client.Main</Main-Class>
                     <X-Compile-Source-JDK>${java.version}</X-Compile-Source-JDK>
                     <X-Compile-Target-JDK>${java.version}</X-Compile-Target-JDK>
                   </manifestEntries>
