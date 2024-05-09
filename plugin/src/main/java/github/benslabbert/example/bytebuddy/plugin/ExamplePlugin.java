@@ -12,6 +12,12 @@ import github.benslabbert.example.bytebuddy.annotation.PlatformTransactionManage
 import java.lang.reflect.Modifier;
 import java.util.Arrays;
 import net.bytebuddy.asm.Advice;
+import net.bytebuddy.asm.Advice.AllArguments;
+import net.bytebuddy.asm.Advice.FieldValue;
+import net.bytebuddy.asm.Advice.OnMethodEnter;
+import net.bytebuddy.asm.Advice.OnMethodExit;
+import net.bytebuddy.asm.Advice.Origin;
+import net.bytebuddy.asm.Advice.Thrown;
 import net.bytebuddy.build.Plugin;
 import net.bytebuddy.description.annotation.AnnotationList;
 import net.bytebuddy.description.method.MethodDescription;
@@ -32,20 +38,16 @@ public class ExamplePlugin implements Plugin {
       DynamicType.Builder<?> builder,
       TypeDescription typeDescription,
       ClassFileLocator classFileLocator) {
-    System.err.println("apply");
 
     MethodList<InDefinedShape> declaredMethods = typeDescription.getDeclaredMethods();
-    System.err.println("declaredMethods: " + declaredMethods);
 
     // add toString
     if (declaredMethods.filter(isToString()).isEmpty()) {
-      System.err.println("create toString");
       builder = builder.method(isToString()).intercept(ToStringMethod.prefixedBy("prefix"));
     }
 
     // create new method
     if (declaredMethods.filter(customMethodElementMatcher()).isEmpty()) {
-      System.err.println("add custom method");
       builder =
           builder
               .defineMethod("customMethod", void.class, Modifier.PUBLIC)
@@ -75,39 +77,33 @@ public class ExamplePlugin implements Plugin {
   @Override
   public void close() {
     // nothing open
-    System.err.println("close");
   }
 
   @Override
   public boolean matches(TypeDescription typeDefinitions) {
-    System.err.println("typeDefinitions: " + typeDefinitions);
     AnnotationList declaredAnnotations = typeDefinitions.getDeclaredAnnotations();
-    System.err.println("declaredAnnotations: " + declaredAnnotations);
-    boolean annotationPresent = declaredAnnotations.isAnnotationPresent(ApplyTransformation.class);
-    System.err.println("annotationPresent " + annotationPresent);
-    return annotationPresent;
+    return declaredAnnotations.isAnnotationPresent(ApplyTransformation.class);
   }
 
   private static class TryFinallyAdvice {
 
     private TryFinallyAdvice() {}
 
-    @Advice.OnMethodEnter
+    @OnMethodEnter
     private static void onEnter(
-        @Advice.AllArguments Object[] args,
-        @Advice.Origin("#m") String methodName,
-        @Advice.FieldValue(value = "log") Logger log) {
-      log.info("Entering method: " + methodName);
-      log.info("args: " + Arrays.toString(args));
+        @AllArguments Object[] args,
+        @Origin("#m") String methodName,
+        @FieldValue(value = "log") Logger log) {
+      log.info("Entering method: {}", methodName);
+      log.info("args: {}", args == null ? "null" : Arrays.toString(args));
       PlatformTransactionManager.begin();
     }
 
-    @Advice.OnMethodExit(onThrowable = Exception.class)
-    private static void onExit(
-        @Advice.Thrown Throwable throwable, @Advice.FieldValue(value = "log") Logger log) {
+    @OnMethodExit(onThrowable = Exception.class)
+    private static void onExit(@Thrown Throwable throwable, @FieldValue(value = "log") Logger log) {
       log.info("Exiting method...");
       if (throwable != null) {
-        log.error("Exception thrown: " + throwable);
+        log.error("Exception thrown", throwable);
         PlatformTransactionManager.rollback();
         return;
       }

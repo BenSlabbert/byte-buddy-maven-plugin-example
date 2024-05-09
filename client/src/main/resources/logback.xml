@@ -7,7 +7,7 @@
 
   <appender name="STDOUT" class="ConsoleAppender">
     <encoder class="PatternLayoutEncoder">
-      <pattern>%d{HH:mm:ss.SSS} %highlight(%-5level) [%thread] %logger{35} [%file:%line][%X{traceId}] -%kvp- %msg%n</pattern>
+      <pattern>%d{HH:mm:ss.SSS} %highlight(%-5level) [%thread] %logger{35}:%line [%X{traceId}] -%kvp- %msg%n</pattern>
     </encoder>
   </appender>
 
