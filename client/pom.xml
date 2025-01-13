@@ -12,17 +12,17 @@
 
   <dependencies>
     <dependency>
-      <groupId>github.benslabbert.example.bytebuddy.annotation</groupId>
-      <artifactId>annotation</artifactId>
-      <version>${revision}</version>
-    </dependency>
-    <dependency>
       <groupId>ch.qos.logback</groupId>
       <artifactId>logback-classic</artifactId>
     </dependency>
     <dependency>
       <groupId>ch.qos.logback</groupId>
       <artifactId>logback-core</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>github.benslabbert.example.bytebuddy.annotation</groupId>
+      <artifactId>annotation</artifactId>
+      <version>${revision}</version>
     </dependency>
     <dependency>
       <groupId>org.slf4j</groupId>

@@ -15,7 +15,7 @@
   </modules>
 
   <properties>
-    <java.version>22</java.version>
+    <java.version>23</java.version>
     <maven.compiler.source>${java.version}</maven.compiler.source>
     <maven.compiler.target>${java.version}</maven.compiler.target>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -39,9 +39,14 @@
   <dependencyManagement>
     <dependencies>
       <dependency>
-        <groupId>org.ow2.asm</groupId>
-        <artifactId>asm</artifactId>
-        <version>${asm.version}</version>
+        <groupId>ch.qos.logback</groupId>
+        <artifactId>logback-classic</artifactId>
+        <version>${logback.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>ch.qos.logback</groupId>
+        <artifactId>logback-core</artifactId>
+        <version>${logback.version}</version>
       </dependency>
       <dependency>
         <groupId>net.bytebuddy</groupId>
@@ -54,14 +59,9 @@
         <version>${byte-buddy.version}</version>
       </dependency>
       <dependency>
-        <groupId>ch.qos.logback</groupId>
-        <artifactId>logback-classic</artifactId>
-        <version>${logback.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>ch.qos.logback</groupId>
-        <artifactId>logback-core</artifactId>
-        <version>${logback.version}</version>
+        <groupId>org.ow2.asm</groupId>
+        <artifactId>asm</artifactId>
+        <version>${asm.version}</version>
       </dependency>
       <dependency>
         <groupId>org.slf4j</groupId>
@@ -91,7 +91,7 @@
                 <keepBlankLines>true</keepBlankLines>
                 <nrOfIndentSpace>2</nrOfIndentSpace>
                 <predefinedSortOrder>recommended_2008_06</predefinedSortOrder>
-                <sortDependencies>scope,group,artifactId</sortDependencies>
+                <sortDependencies>scope,groupId,artifactId</sortDependencies>
                 <sortPlugins>groupId,artifactId</sortPlugins>
               </sortPom>
             </pom>
