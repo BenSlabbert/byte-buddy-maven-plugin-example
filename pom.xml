@@ -22,7 +22,7 @@
     <revision>1.0-SNAPSHOT</revision>
 
     <!--deps-->
-    <byte-buddy.version>1.17.4</byte-buddy.version>
+    <byte-buddy.version>1.17.5</byte-buddy.version>
     <asm.version>9.8</asm.version>
     <logback.version>1.5.18</logback.version>
     <slf4j.version>2.0.17</slf4j.version>
