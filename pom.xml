@@ -22,18 +22,18 @@
     <revision>1.0-SNAPSHOT</revision>
 
     <!--deps-->
-    <byte-buddy.version>1.18.3</byte-buddy.version>
+    <byte-buddy.version>1.18.7</byte-buddy.version>
     <asm.version>9.9.1</asm.version>
-    <logback.version>1.5.23</logback.version>
+    <logback.version>1.5.32</logback.version>
     <slf4j.version>2.0.17</slf4j.version>
 
     <!--plugins-->
-    <spotless.version>3.1.0</spotless.version>
+    <spotless.version>3.3.0</spotless.version>
     <flatten-maven-plugin.version>1.7.3</flatten-maven-plugin.version>
-    <maven-compiler-plugin.version>3.14.1</maven-compiler-plugin.version>
+    <maven-compiler-plugin.version>3.15.0</maven-compiler-plugin.version>
     <maven-install-plugin.version>3.1.4</maven-install-plugin.version>
     <maven-jar-plugin.version>3.5.0</maven-jar-plugin.version>
-    <maven-shade-plugin.version>3.6.1</maven-shade-plugin.version>
+    <maven-shade-plugin.version>3.6.2</maven-shade-plugin.version>
   </properties>
 
   <dependencyManagement>
